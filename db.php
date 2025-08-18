@@ -3,7 +3,7 @@
 include 'header.php';
 $DB_HOST = '127.0.0.1';   
 $DB_USER = 'root';
-$DB_PASS = 'sara2004';              
+$DB_PASS = 'sri2005';              
 $DB_NAME = 'blog';
 $DB_PORT = 3306;         
 
