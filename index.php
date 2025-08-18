@@ -5,7 +5,6 @@ $result = $conn->query("SELECT id, title, LEFT(content,200) AS excerpt, created_
 ?>
 
 <h2>All Posts</h2>
-
 <?php while ($row = $result->fetch_assoc()): ?>
     <article>
         <h3><a href="view.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['title']) ?></a></h3>
@@ -15,6 +14,7 @@ $result = $conn->query("SELECT id, title, LEFT(content,200) AS excerpt, created_
             <p>
                 <a href="edit_post.php?id=<?= $row['id'] ?>" class="btn btn-edit">Edit</a>
                 <a href="delete_post.php?id=<?= $row['id'] ?>" class="btn btn-delete" onclick="return confirm('Delete?')">Delete</a>
+                <a href="detail.php?id=<?= $row['id'] ?>" class="btn btn-view">View</a>
             </p>
         <?php endif; ?>
         <hr>

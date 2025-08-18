@@ -1,3 +1,4 @@
+
 <?php
 require 'db.php';
 if (empty($_SESSION['user'])) {
@@ -29,10 +30,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <h2>Add Post</h2>
+<a href="index.php" class="back-link">← Back to all posts</a>
 <form method="post">
     <label>Title:<br><input type="text" name="title" required></label><br><br>
     <label>Content:<br><textarea name="content" rows="8" cols="80" required></textarea></label><br><br>
     <button type="submit">Create</button>
+    
 </form>
 
 <?php include 'footer.php'; ?>

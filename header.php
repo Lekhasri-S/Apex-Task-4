@@ -16,6 +16,7 @@ if (session_status() == PHP_SESSION_NONE) session_start();
     <nav>
         <?php if (!empty($_SESSION['user'])): ?>
             Hello, <?=htmlspecialchars($_SESSION['user'])?>
+            <a href="index.php">Home</a>
             <a href="add_post.php">Add Post</a>
             <a href="logout.php">Logout</a>
         <?php else: ?>

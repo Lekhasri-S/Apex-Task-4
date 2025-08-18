@@ -23,3 +23,9 @@ The goal was to create a **Blog Web Application** using **PHP, MySQL, HTML, CSS*
 - **phpMyAdmin** (Database management)
 
 ---
+
+github link :
+https://github.com/Saravanan-sar/Apexphp-Internship-Task2.git
+
+linkedin video link :
+https://www.linkedin.com/posts/saravanan-nagappan-779bb8258_php-mysql-crud-activity-7363203533598281729-qOWX?utm_source=share&utm_medium=member_android&rcm=ACoAAD-JuU0BoQo2axtggrvpn6L0x22yLlF-4LE

@@ -21,6 +21,7 @@ header {
     padding: 15px 25px;
     border-radius: 8px; /* Reduced from 40px+ */
     margin-bottom: 20px;
+    border: 3px solid black;
     display: flex;
     justify-content: space-between; /* Separate title & links */
     align-items: center;
@@ -62,15 +63,16 @@ header nav a:hover {
 
 /* Post list */
 article {
-    background: white;
+    background: #80e9f7;
     padding: 15px;
+    border: 2px solid black;
     border-radius: 8px;
     margin-bottom: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 article h3 a {
-    color: #007BFF;
+    color: gray;
     text-decoration: none;
 }
 
@@ -101,7 +103,7 @@ form textarea {
     padding: 8px;
     margin-top: 6px;
     margin-bottom: 12px;
-    border: 1px solid #ccc;
+    border: 1px solid blue;
     border-radius: 6px;
 }
 
@@ -169,4 +171,101 @@ footer {
 .btn-delete:hover {
     background-color: #c82333;
     transform: scale(1.05);
+}
+
+.btn-view {
+    background-color: #079b38;
+    color: white;
+}
+
+.btn-view:hover {
+    background-color: #218838;
+    transform: scale(1.05) ;
+}
+
+
+.post {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 20px;
+  color:white;
+  background: #007BFF;
+  border-radius: 10px;
+  border: 3px solid green;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.post-title {
+  font-size: 26px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.post-content {
+  line-height: 1.6;
+  color: white;
+  font-size: 30px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.back-link {
+    background-color: green;
+    color: white;
+    padding-bottom: 5px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.post-summary {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px auto;
+  border-radius: 8px;
+  max-width: 700px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.post-summary h3 {
+  margin: 0 0 10px;
+}
+
+.post-summary a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.post-summary a:hover {
+  text-decoration: underline;
 }
