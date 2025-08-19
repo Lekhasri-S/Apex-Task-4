@@ -24,5 +24,5 @@ The goal was to create a **Blog Web Application** using **PHP, MySQL, HTML, CSS*
 
 ---
 
-github link :
-https://github.com/sri2735/Apexinternship-Task_2.git
+github link : 
+    https://github.com/Lekhasri-S/Task-3.git
