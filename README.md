@@ -1,9 +1,9 @@
-# Task 2 - PHP Blog Application
+# Task 3 - PHP Blog Application
 
 ##  Overview
 This task is part of the Apex PHP Internship program.  
 The goal was to create a **Blog Web Application** using **PHP, MySQL, HTML, CSS** where users can register, log in, and manage posts.
-
+Add pagination and search function 
 ---
 
 ##  Features
