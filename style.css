@@ -1,4 +1,4 @@
-/* Reset and base styles */
+ Reset and base styles
 * {
     margin: 0;
     padding: 0;
@@ -269,3 +269,14 @@ h1 {
 .post-summary a:hover {
   text-decoration: underline;
 }
+
+.new {
+    color :#079b38;
+    background-color: turquoise;
+
+}
+
+.new:hover {
+    background-color: #28a745;
+    color: white;
+} 

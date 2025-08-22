@@ -3,7 +3,8 @@
 ##  Overview
 This task is part of the Apex PHP Internship program.  
 The goal was to create a **Blog Web Application** using **PHP, MySQL, HTML, CSS** where users can register, log in, and manage posts.
-Add pagination and search function 
+Add pagination and search function Improve ui using Bootsrap
+
 ---
 
 ##  Features
@@ -24,5 +25,5 @@ Add pagination and search function
 
 ---
 
-github link : 
-https://github.com/Lekhasri-S/Apex-Task-3.git
+github link :
+https://github.com/Saravanan-sar/ApexInternship-Task-3.git

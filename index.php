@@ -1,3 +1,16 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My Blog</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+    
+
+</head>
 <?php
 require 'db.php';
 
@@ -39,7 +52,7 @@ $result = $conn->query($sql);
 <?php if ($result->num_rows > 0): ?>
     <?php while ($row = $result->fetch_assoc()): ?>
         <article style="margin-bottom:20px;">
-            <h3><a href="view.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['title']) ?></a></h3>
+            <h3><a class="new" href="view.php?id=<?= $row['id'] ?>"><?= htmlspecialchars($row['title']) ?></a></h3>
             <p><small><?= htmlspecialchars($row['created_at']) ?></small></p>
             <p><?= nl2br(htmlspecialchars($row['excerpt'])) ?>...</p>
             <?php if (!empty($_SESSION['user'])): ?>
@@ -53,20 +66,33 @@ $result = $conn->query($sql);
         </article>
     <?php endwhile; ?>
 <?php else: ?>
-    <p>No posts found.</p>
+    <p class="text-primary bg-info">No posts found.</p>
 <?php endif; ?>
 
 <!-- Pagination -->
-<div class="pagination">
-    <?php if ($page > 1): ?>
-        <a href="?q=<?= urlencode($search) ?>&page=<?= $page - 1 ?>">⬅ Prev</a>
-    <?php endif; ?>
+<nav aria-label="Search results pagination">
+    <ul class="pagination justify-content-center">
+        <?php if ($page > 1): ?>
+            <li class="page-item">
+                <a class="page-link" href="?q=<?= urlencode($search) ?>&page=<?= $page - 1 ?>" aria-label="Previous">
+                    <span aria-hidden="true">⬅ Prev</span>
+                </a>
+            </li>
+        <?php endif; ?>
 
-    <span>Page <?= $page ?> of <?= $totalPages ?></span>
+        <li class="page-item disabled">
+            <span class="page-link">Page <?= $page ?> of <?= $totalPages ?></span>
+        </li>
 
-    <?php if ($page < $totalPages): ?>
-        <a href="?q=<?= urlencode($search) ?>&page=<?= $page + 1 ?>">Next ➡</a>
-    <?php endif; ?>
-</div>
+        <?php if ($page < $totalPages): ?>
+            <li class="page-item">
+                <a class="page-link" href="?q=<?= urlencode($search) ?>&page=<?= $page + 1 ?>" aria-label="Next">
+                    <span aria-hidden="true">Next ➡</span>
+                </a>
+            </li>
+        <?php endif; ?>
+    </ul>
+</nav>
+
 
 <?php include 'footer.php'; ?>

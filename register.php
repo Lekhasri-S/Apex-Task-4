@@ -36,11 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<h2>Register</h2>
-<form method="post">
-    <label>Username:<br><input type="text" name="username" required></label><br><br>
-    <label>Password:<br><input type="password" name="password" required></label><br><br>
-    <button type="submit">Register</button>
-</form>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-10"> <!-- Wider column -->
+            <h2 class="text-center text-white bg-info mt-5 mb-3">Register</h2>
+            <form method="post" class="border p-5 rounded shadow bg-light">
+                <div class="mb-4">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php include 'footer.php'; ?>
