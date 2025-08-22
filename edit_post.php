@@ -1,24 +1,27 @@
 <?php
 require 'db.php';
-if (empty($_SESSION['user'])) {
-    $_SESSION['flash'] = "You must login to edit posts.";
-    header("Location: login.php");
+
+// Only admin can edit
+if (empty($_SESSION['user']) || $_SESSION['role'] !== 'admin') {
+    $_SESSION['flash'] = "Unauthorized access.";
+    header("Location: index.php");
     exit;
 }
 
 $id = intval($_GET['id'] ?? 0);
 
+// If POST → update post
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = trim($_POST['title'] ?? '');
     $content = trim($_POST['content'] ?? '');
 
     if ($title === '' || $content === '') {
-        $_SESSION['flash'] = "Fill title and content.";
+        $_SESSION['flash'] = "Fill all fields.";
         header("Location: edit_post.php?id=$id");
         exit;
     }
 
-    $stmt = $conn->prepare("UPDATE posts SET title = ?, content = ? WHERE id = ?");
+    $stmt = $conn->prepare("UPDATE posts SET title=?, content=? WHERE id=?");
     $stmt->bind_param("ssi", $title, $content, $id);
     $stmt->execute();
     $stmt->close();
@@ -28,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 
-// load existing
-$stmt = $conn->prepare("SELECT title, content FROM posts WHERE id = ?");
-$stmt->bind_param("i", $id); // ✅ FIXED
+// Fetch post
+$stmt = $conn->prepare("SELECT title, content FROM posts WHERE id=?");
+$stmt->bind_param("i", $id);
 $stmt->execute();
 $res = $stmt->get_result();
 $post = $res->fetch_assoc();
@@ -41,17 +44,23 @@ if (!$post) {
     header("Location: index.php");
     exit;
 }
+
+include 'header.php';
 ?>
 
-<h2>Edit Post</h2>
-<form method="post">
-    <label>Title:<br>
-        <input type="text" name="title" value="<?= htmlspecialchars($post['title']) ?>" required>
-    </label><br><br>
-    <label>Content:<br>
-        <textarea name="content" rows="8" cols="80" required><?= htmlspecialchars($post['content']) ?></textarea>
-    </label><br><br>
-    <button type="submit">Update</button>
-</form>
+<div class="container mt-4">
+    <h2>Edit Post</h2>
+    <form method="post" class="border p-4 bg-light rounded shadow">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" value="<?= htmlspecialchars($post['title']) ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Content</label>
+            <textarea name="content" rows="6" class="form-control" required><?= htmlspecialchars($post['content']) ?></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Update Post</button>
+    </form>
+</div>
 
 <?php include 'footer.php'; ?>

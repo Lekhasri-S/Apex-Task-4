@@ -1,9 +1,10 @@
-
 <?php
 require 'db.php';
-if (empty($_SESSION['user'])) {
-    $_SESSION['flash'] = "You must login to add posts.";
-    header("Location: login.php");
+
+// Only admin can add posts
+if (empty($_SESSION['user']) || $_SESSION['role'] !== 'admin') {
+    $_SESSION['flash'] = "Unauthorized action.";
+    header("Location: index.php");
     exit;
 }
 
@@ -12,30 +13,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $content = trim($_POST['content'] ?? '');
 
     if ($title === '' || $content === '') {
-        $_SESSION['flash'] = "Fill title and content.";
+        $_SESSION['flash'] = "Please fill all fields.";
         header("Location: add_post.php");
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO posts (title, content) VALUES (?, ?)");
+    $stmt = $conn->prepare("INSERT INTO posts (title, content, created_at) VALUES (?, ?, NOW())");
     $stmt->bind_param("ss", $title, $content);
     $stmt->execute();
     $stmt->close();
 
-    $_SESSION['flash'] = "Post added.";
+    $_SESSION['flash'] = "Post added successfully.";
     header("Location: index.php");
     exit;
 }
 
+include 'header.php';
 ?>
 
-<h2>Add Post</h2>
-<a href="index.php" class="back-link">← Back to all posts</a>
-<form method="post">
-    <label>Title:<br><input type="text" name="title" required></label><br><br>
-    <label>Content:<br><textarea name="content" rows="8" cols="80" required></textarea></label><br><br>
-    <button type="submit">Create</button>
-    
-</form>
+<div class="container mt-4">
+    <h2>Add New Post</h2>
+    <form method="post" class="border p-4 bg-light rounded shadow">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Content</label>
+            <textarea name="content" rows="6" class="form-control" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Post</button>
+    </form>
+</div>
 
 <?php include 'footer.php'; ?>
