@@ -12,7 +12,7 @@ Add pagination and search function Improve ui using Bootsrap
 - **Create, Edit, and Delete Posts** (only for logged-in users)
 - **View All Posts** (public access)
 - **MySQL Database Integration**
-- **Basic UI Styling** for better user experience
+- **Basic UI Styling with bootstrap** for better user experience
 
 ---
 
